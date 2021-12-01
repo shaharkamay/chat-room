@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/*
+font-family: 'Oswald', sans-serif;
+font-family: 'Montserrat', sans-serif;
+h1 - 90px
+h2 - 30px
+h2 - 48px (footer)
+h3 - 21px
+p - 21px (main)
+p - 18px
+p - 16px (footer)
+*/
+
+:root {
+    --clr-accent: #16920b;
+
+    --clr-light: #F1F1F1;
+    --clr-dark: #2E323F;
+    --clr-primary: #d0d3db;
+    --clr-secondary: #7d86a3;
+
+    --foreground: var(--clr-dark);
+    --background: var(--clr-light);
+
+    --theme-icon: "☀";
+
+    --inverted: none;
+
+    --font-title: 'Oswald', sans-serif;
+    --font-text: 'Montserrat', sans-serif;
+
+    --padding-block-section: 1rem;
+    --margin-top-element: 1em;
+
+    --radius: 5px;
+
+    --link-clr: #0000EE;
+    --visited-clr: #551A8B;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+ul,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-text);
+    line-height: 1.5;
+}
+
+.theme-dark {
+    --clr-light: #F1F1F1;
+    --clr-dark: #2E323F;
+    --clr-primary: #3B4050;
+    --clr-secondary: #6F737F;
+
+    --foreground: var(--clr-light);
+    --background: var(--clr-dark);
+
+    --theme-icon: "🌛︎";
+
+    --inverted: invert(1) hue-rotate(180deg);
+
+    --link-clr: #8ab4f8;
+    --visited-clr: #c58af9;
+
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-auto {
+        --clr-light: #F1F1F1;
+        --clr-dark: #2E323F;
+        --clr-primary: #3B4050;
+        --clr-secondary: #6F737F;
+
+        --foreground: var(--clr-light);
+        --background: var(--clr-dark);
+
+        --theme-icon: "🌛︎";
+
+        --inverted: invert(1) hue-rotate(180deg);
+
+        --link-clr: #8ab4f8;
+        --visited-clr: #c58af9;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+

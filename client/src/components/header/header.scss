@@ -1,0 +1,126 @@
+/*
+header
+*/
+header {
+    background-color: var(--clr-primary);
+    padding: 1em 0;
+    font-family: var(--font-title);
+    text-align: center;
+
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+// .mobile-nav {
+//     width: 40%;
+//     text-align: left;
+// }
+// .nav-toggle {
+//     cursor: pointer;
+//     border: 0;
+//     width: 3em;
+//     height: 3em;
+//     padding: 0;
+//     border-radius: 50%;
+//     background-color: var(--clr-accent);
+//     transition: opacity 250ms ease;
+// }
+
+// .hamburger {
+//     width: 50%;
+//     height: 3px;
+//     display: block;
+//     margin: 3px auto;
+//     background-color: var(--foreground);
+// }
+
+
+.logo {
+    width: 20%;
+    margin: 0;
+}
+.logo:hover,
+.logo:focus {
+    opacity: .75;
+}
+.logo-img {
+    // filter: var(--inverted);
+    vertical-align: bottom;
+    height: 2.5em;
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+}
+
+.theme {
+    text-align: right;
+}
+.theme:hover,
+.theme:focus {
+    opacity: .75;
+}
+
+.select-theme {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--foreground);
+    font-weight: 500;
+    font-family: var(--font-title);
+}
+
+.select-theme option {
+    color: var(--foreground);
+    background-color: var(--background);
+}
+// 
+.theme-icon::after {
+    content: var(--theme-icon); //🌛︎
+    color: var(--foreground)
+}
+
+.nav {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
+}
+
+.nav--visible {
+    display: block;
+    margin-top: var(--margin-top-element);
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    margin: 0;
+    list-style: none;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--foreground);
+    cursor: pointer;
+}
+.nav__link:hover,
+.nav__link:focus {
+    opacity: 0.75;
+}
+
+.logo-and-theme {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
