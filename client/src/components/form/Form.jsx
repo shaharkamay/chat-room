@@ -1,5 +1,4 @@
 import FormElement from './FormElement';
-import InvalidMessage from './InvalidMessage';
 import './form.scss';
 
 function Form({ containerClass, id, title, formElements, submitValue, handleSubmit }) {
@@ -8,19 +7,20 @@ function Form({ containerClass, id, title, formElements, submitValue, handleSubm
         <div className={containerClass}>
             <form id={id} className="form" onSubmit={handleSubmit}>
                 <h2>{title}</h2>
-                {formElements.map(({ labelValue, type, id, placeholder }, i) => 
+                {formElements.map(({ labelValue, type, id, placeholder, setState, handleBlur }, i) => 
                     <FormElement 
                         labelValue={labelValue} 
                         type={type} 
                         id={id} 
                         placeholder={placeholder}
                         key={`${i}`}
+                        setState={setState}
+                        onBlur={handleBlur}
                     />
                 )}
                 <div className="form-element">
                     <button className="default--button">{submitValue}</button>
                 </div>
-                <InvalidMessage id="invalid-message" />
             </form>
         </div>
     )

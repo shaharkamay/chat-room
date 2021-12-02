@@ -13,7 +13,7 @@ p - 16px (footer)
 */
 
 :root {
-    --clr-accent: #16920b;
+    --clr-accent: #3d75c9;
 
     --clr-light: #F1F1F1;
     --clr-dark: #2E323F;
@@ -59,11 +59,6 @@ img {
     max-width: 100%;
 }
 
-body {
-    font-family: var(--font-text);
-    line-height: 1.5;
-}
-
 .theme-dark {
     --clr-light: #F1F1F1;
     --clr-dark: #2E323F;
@@ -82,14 +77,37 @@ body {
 
 }
 
+body {
+    background-color: var(--clr-dark);
+    min-height: 100vh;
+    font-family: var(--font-text);
+    line-height: 1.5;
+}
+
 /*
 main section
 */
 main {
     padding: 3em 0;
-    background-color: var(--clr-secondary);
+    background-color: var(--clr-primary);
 }
 
+.default--button {
+    vertical-align: bottom;
+    cursor: pointer;
+    border: none;
+    background-color: var(--clr-accent);
+    color: var(--clr-light);
+    border-radius: var(--radius);
+    font-family: var(--font-title);
+    font-size: inherit;
+    text-decoration: none;
+    padding: .5em 0;
+}
+.default--button:hover,
+.default--button:focus {
+    opacity: 0.75;
+}
 
 @media (prefers-color-scheme: dark) {
     .theme-auto {

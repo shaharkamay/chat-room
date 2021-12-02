@@ -1,6 +1,6 @@
-function InvalidMessage({ id }) {
+function InvalidMessage({ id, value }) {
     return (
-        <span className="invalid-message" id={id}></span>
+        <span className="invalid-message" id={id}>{value || ''}</span>
     )
 }
 

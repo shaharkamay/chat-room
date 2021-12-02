@@ -1,13 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-const cors = require("cors");
-const morgan = require("morgan");
-const morganHandler = require("./middlewares/morgan");
-const errorHandler = require("./middlewares/errorHandlers");
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import morganHandler from './middleware/morgan.js';
+import errorHandler from './error-handling/error-handler.js';
 const app = express();
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(
@@ -15,9 +13,11 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms :body")
 );
 
+app.use(express.static("../client/build"));
 app.get("/", (req, res) => {
-  res.send("fuck off");
+  res.sendFile("/index.html");
 });
 
 app.use(errorHandler);
-module.exports = app;
+
+export default app;

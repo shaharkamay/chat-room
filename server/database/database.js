@@ -104,4 +104,4 @@ class ReadOnlyEntry extends Entry {
 }
 
 
-module.exports = { Database };
+export { Database };
