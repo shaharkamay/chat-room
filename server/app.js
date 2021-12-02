@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import morganHandler from './middleware/morgan.js';
 import errorHandler from './error-handling/error-handler.js';
+import authRouter from './routes/auth.js';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +18,8 @@ app.use(express.static("../client/build"));
 app.get("/", (req, res) => {
   res.sendFile("/index.html");
 });
+
+app.use('/auth', authRouter);
 
 app.use(errorHandler);
 

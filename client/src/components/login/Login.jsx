@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from "../form/Form"
 import './login.scss';
 import validator from 'validator';
+import axios from 'axios';
 
 function Login() {
     const [email, setEmail] = useState();
@@ -34,9 +35,10 @@ function Login() {
         },
     ];
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email, password)
+        const response = await axios.post('http://localhost:8080/auth/login', { email, password });
+        console.log(response);
     }
 
 
