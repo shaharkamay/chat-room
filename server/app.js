@@ -7,6 +7,7 @@ const morganHandler = require("./middlewares/morgan");
 const errorHandler = require("./middlewares/errorHandlers");
 const app = express();
 
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(cors());
 app.use(
@@ -17,5 +18,6 @@ app.use(
 app.get("/", (req, res) => {
   res.send("fuck off");
 });
+
 app.use(errorHandler);
 module.exports = app;

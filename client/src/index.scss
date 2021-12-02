@@ -82,6 +82,15 @@ body {
 
 }
 
+/*
+main section
+*/
+main {
+    padding: 3em 0;
+    background-color: var(--clr-secondary);
+}
+
+
 @media (prefers-color-scheme: dark) {
     .theme-auto {
         --clr-light: #F1F1F1;

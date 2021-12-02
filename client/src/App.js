@@ -20,16 +20,18 @@ function App() {
       <div className={`App ${theme}`}>
         <BrowserRouter>
           <Header />
-          <Routes>
-            {/* Main Route */}
-            <Route exact path="/" element={<Home />} />
+          <main>
+            <Routes>
+              {/* Main Route */}
+              <Route exact path="/" element={<Home />} />
 
-            {/* Chat Route */}
-            <Route path="/chat" element={<ChatRoom />} />
+              {/* Chat Route */}
+              <Route path="/chat" element={<ChatRoom />} />
 
-            {/* Login Route */}
-            <Route path="/login" element={<Login />} />
-          </Routes>
+              {/* Login Route */}
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </main>
           <Footer />
         </BrowserRouter>
 
