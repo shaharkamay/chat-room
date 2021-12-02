@@ -9,8 +9,8 @@ const validateLogin = (req, res, next) => {
         const email = req.body.email;
         const password = req.body.password;
         req.validated = validator.isEmail(email) && validator.isStrongPassword(password, { minSymbols: 0 });
-        console.log(req.validated);
-        next();
+        if(req.validated) next();
+        else next({ status: 400, message: 'Invalid email or password' })
     } catch (error) {
         next(error);
     }
