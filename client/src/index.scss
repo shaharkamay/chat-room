@@ -37,6 +37,8 @@ p - 16px (footer)
 
     --link-clr: #0000EE;
     --visited-clr: #551A8B;
+
+    --bg-chat-img: url('./assets/bg-chat-theme-light.png');
 }
 
 *,
@@ -75,6 +77,7 @@ img {
     --link-clr: #8ab4f8;
     --visited-clr: #c58af9;
 
+    --bg-chat-img: url('./assets/bg-chat-theme-dark.png');
 }
 
 body {
@@ -130,6 +133,8 @@ main {
 
         --link-clr: #8ab4f8;
         --visited-clr: #c58af9;
+
+        --bg-chat-img: url('./assets/bg-chat-theme-dark.png');
     }
 }
 
