@@ -15,7 +15,7 @@ const authRouter = express.Router();
 //   token,
 // } = require("../controllers/authController");
 
-// import auth from '../middleware/auth-handler';
+import auth from '../middleware/auth-handler.js';
 
 import { validateLogin, validateRegister } from '../middleware/validator.js';
 
@@ -72,6 +72,14 @@ authRouter.post("/token", async (req, res, next) => {
     }
 });
 // authRouter.post("/register", validateRegister, register);
-// authRouter.post("/logout", auth, logout);
+authRouter.post("/logout", auth, async (req, res, next) => {
+    try {
+        const { userId } = req.user;
+        await Token.deleteOne({ userId });
+        res.send(200);
+    } catch (err) {
+        next(err);
+    }
+});
 
 export default authRouter;

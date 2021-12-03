@@ -16,78 +16,78 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("access")
   );
 
-  const askForNewToken = useCallback(async (refreshToken) => {
-    return await axios.post(`http://localhost:8080/api/auth/token`, {
-      token: refreshToken,
-    });
-  }, []);
+const askForNewToken = useCallback(async (refreshToken) => {
+  return await axios.post(`http://localhost:8080/api/auth/token`, {
+    token: refreshToken,
+  });
+}, []);
 
-  useEffect(() => {
-    (async () => {
-      if (refreshToken && refreshToken !== "undefined" && !loggedIn) {
-        try {
-          const { data } = await askForNewToken(refreshToken);
-          setAccessToken(data.accessToken);
-          localStorage.setItem("access", data.accessToken);
-          setEmail(data.email);
-          setLoggedIn(true);
-        } catch (error) {
-          console.log(error);
-          setRefreshToken(null);
-        }
+useEffect(() => {
+  (async () => {
+    if (refreshToken && refreshToken !== "undefined" && !loggedIn) {
+      try {
+        const { data } = await askForNewToken(refreshToken);
+        setAccessToken(data.accessToken);
+        localStorage.setItem("access", data.accessToken);
+        setEmail(data.email);
+        setLoggedIn(true);
+      } catch (error) {
+        console.log(error);
+        setRefreshToken(null);
       }
-    })();
-  }, [refreshToken, askForNewToken, loggedIn]);
-
-  const login = useCallback(async ({ email, password }) => {
-    try {
-      const { data } = await axios.post(`http://localhost:8080/api/auth/login`, {
-        email,
-        password,
-      });
-      setRefreshToken(data.refreshToken);
-      setAccessToken(data.accessToken);
-      localStorage.setItem("refresh", data.refreshToken);
-      localStorage.setItem("access", data.accessToken);
-      setEmail(email);
-      setLoggedIn(true);
-    } catch (error) {
-      if (error.isAxiosError) console.log(error.response.data.error);
-      else console.log(error);
     }
-  }, []);
+  })();
+}, [refreshToken, askForNewToken, loggedIn]);
 
-  const register = useCallback(async ({ username, password, email }) => {
-    // try {
-    //   await axios.post(`http://localhost:8080/api/auth/register`, {
-    //     username,
-    //     password,
-    //     email,
-    //   });
-    // } catch (error) {
-    //   if (error.isAxiosError) throw error.response.data.error;
-    //   else {
-    //     console.log(error);
-    //     throw Error("Something went bad");
-    //   }
-    // }
-  }, []);
+const login = useCallback(async ({ email, password }) => {
+  try {
+    const { data } = await axios.post(`http://localhost:8080/api/auth/login`, {
+      email,
+      password,
+    });
+    setRefreshToken(data.refreshToken);
+    setAccessToken(data.accessToken);
+    localStorage.setItem("refresh", data.refreshToken);
+    localStorage.setItem("access", data.accessToken);
+    setEmail(email);
+    setLoggedIn(true);
+  } catch (error) {
+    if (error.isAxiosError) console.log(error.response.data.error);
+    else console.log(error);
+  }
+}, []);
 
-  const logout = useCallback(async () => {
-    await axios.post(
-      `http://localhost:8080/api/auth/logout`,
-      {},
-      {
-        headers: {
-          Auth: accessToken,
-        },
-      }
-    );
-    setEmail(null);
-    setLoggedIn(false);
-    localStorage.removeItem("refresh");
-    localStorage.removeItem("access");
-  }, [accessToken]);
+const register = useCallback(async ({ username, password, email }) => {
+  // try {
+  //   await axios.post(`http://localhost:8080/api/auth/register`, {
+  //     username,
+  //     password,
+  //     email,
+  //   });
+  // } catch (error) {
+  //   if (error.isAxiosError) throw error.response.data.error;
+  //   else {
+  //     console.log(error);
+  //     throw Error("Something went bad");
+  //   }
+  // }
+}, []);
+
+const logout = useCallback(async () => {
+  await axios.post(
+    `http://localhost:8080/api/auth/logout`,
+    {},
+    {
+      headers: {
+        Auth: accessToken,
+      },
+    }
+  );
+  setEmail(null);
+  setLoggedIn(false);
+  localStorage.removeItem("refresh");
+  localStorage.removeItem("access");
+}, [accessToken]);
 
   return (
     <authContext.Provider
