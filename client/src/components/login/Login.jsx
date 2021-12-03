@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from "react";
-import { authContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Form from "../form/Form"
 import './login.scss';
 import validator from 'validator';
 
 function Login() {
-    const { login, loggedIn } = useContext(authContext);
+    const { login, loggedIn } = useContext(AuthContext);
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();

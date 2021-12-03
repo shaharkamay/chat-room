@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // import { BASE_URL } from "./index";
 
-export const authContext = React.createContext({});
+export const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [email, setEmail] = useState(null);
@@ -90,20 +90,20 @@ const logout = useCallback(async () => {
 }, [accessToken]);
 
   return (
-    <authContext.Provider
+    <AuthContext.Provider
       value={{ loggedIn, email, accessToken, login, logout, register }}
     >
       {children}
-    </authContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
 export const Auth = ({ children }) => (
-  <authContext.Consumer> {{ children }}</authContext.Consumer>
+  <AuthContext.Consumer> {{ children }}</AuthContext.Consumer>
 );
 
 export const useAuth = () => {
-  const { loggedIn } = useContext(authContext);
+  const { loggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (!loggedIn) navigate("/login");
