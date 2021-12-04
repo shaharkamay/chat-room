@@ -17,7 +17,7 @@ function Chat() {
 
     useEffect(() => {
         if(!loggedIn) navigate('/');
-        const source = new EventSourcePolyfill("http://localhost:8080/api/chat/message", {
+        const source = new EventSourcePolyfill("/api/chat/message", {
             headers: { "Content-Type": "text/event-stream", auth: accessToken },
         });
 
