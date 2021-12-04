@@ -56,6 +56,10 @@
     border-radius: 20px 0 20px 20px;
     background-color: var(--clr-accent);
     color: var(--clr-light);
+
+    .message__user {
+        display: none;
+    }
 }
 
 .message__container {
