@@ -1,49 +1,29 @@
-// useAxios hook
+import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext'
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+function useAxios({ url, method, body = null, headers = {} }) {
+  const { accessToken } = useContext(AuthContext);
+  headers.auth = accessToken;
 
-// {
-//   method: "get",
-//   url: "/api/tickets",
-//   options: {
-//     headers: { accept: "*/*" },
-//     params: { limit: 5, searchText: "" },
-//   },
-// }
-const useAxios = (axiosOptions) => {
-  const { url, options, method, body } = axiosOptions;
-
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  let axiosRequest;
-
-  const fetchData = () => {
-    if (method === "get" || method === "delete") {
-      axiosRequest = axios[method](url, options);
-    } else {
-      axiosRequest = axios[method](url, JSON.parse(body));
-    }
-
-    axiosRequest
-      .then((res) => {
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchData();
-  }, [axiosOptions]);
+    axios[method](url, { headers }, body)
+      .then(res => {
+        setData(res.data);
+      })
+      .catch(err => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setIsPending(false);
+      })
+  }, [])
 
-  return { response, error, loading };
-};
+  return { data, isPending, error };
+}
 
-export default useAxios;
+export default useAxios

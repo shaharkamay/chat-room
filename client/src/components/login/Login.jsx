@@ -8,8 +8,8 @@ import validator from 'validator';
 function Login() {
     const { login, loggedIn } = useContext(AuthContext);
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
 
@@ -23,6 +23,7 @@ function Login() {
             type: "email",
             id: "email",
             placeholder: "Enter Email",
+            state: email,
             setState: setEmail,
             handleBlur: (e, setError) => {
                 if(!validator.isEmail(e.target.value)) {
@@ -35,6 +36,7 @@ function Login() {
             type: "password",
             id: "password",
             placeholder: "Enter Password",
+            state: password,
             setState: setPassword,
             handleBlur: (e, setError) => {
                 if(!validator.isStrongPassword(e.target.value, { minSymbols: 0 })) {
@@ -46,9 +48,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        login({ email, password });
-        // const response = await axios.post('http://localhost:8080/api/auth/login', { email, password });
-        // console.log(response);
+        await login({ email, password });
     }
 
 

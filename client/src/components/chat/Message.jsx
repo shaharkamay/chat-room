@@ -1,15 +1,15 @@
-function Message({ dir }) {
+function Message({ dir, user, content, timestamp }) {
     return (
         <div className={`message__container message__container--${dir}`}>
             <div className={`chat__message message--${dir}`}>
                 <div className="message__user">
-                    dana@gmail.com
+                    {user}
                 </div>
                 <div className="message__content">
-                    kjsdodnsjkfnfdsjkn kdsfnjdsnfjdsknfkdj hkabnsdijnadsjkfndkaj kh djsknfisdjnfjsk kdjfnjdsfankjdsf kdsf kdjfndfjknadfkjndfaksj  asjndasjndaj hkkjsadn adsbfhjadsbffabjh
+                    {content}    
                 </div>
-                <div className="message__timespan">
-                    16:31
+                <div className="message__timestamp">
+                    {timestamp}
                 </div>
 
             </div>

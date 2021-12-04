@@ -7,13 +7,14 @@ function Form({ containerClass, id, title, formElements, submitValue, handleSubm
         <div className={containerClass}>
             <form id={id} className="form" onSubmit={handleSubmit}>
                 <h2>{title}</h2>
-                {formElements.map(({ labelValue, type, id, placeholder, setState, handleBlur }, i) => 
+                {formElements.map(({ labelValue, type, id, placeholder, state, setState, handleBlur }, i) => 
                     <FormElement 
                         labelValue={labelValue} 
                         type={type} 
                         id={id} 
                         placeholder={placeholder}
                         key={`${i}`}
+                        state={state}
                         setState={setState}
                         onBlur={handleBlur}
                     />

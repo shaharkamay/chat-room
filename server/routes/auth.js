@@ -30,7 +30,7 @@ authRouter.post("/login", validateLogin, async (req, res, next) => {
             throw { status: 400, message: "Bad password" };
 
         const userId = user._id;
-        console.log(ACCESS_TIME)
+
         const accessToken = jwt.sign({ email, userId }, JWT_SECRET, {
             expiresIn: ACCESS_TIME,
         });

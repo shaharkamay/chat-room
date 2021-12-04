@@ -1,7 +1,7 @@
 import { useState } from "react"
 import InvalidMessage from "./InvalidMessage"
 
-function FormElement({ labelValue, type, id, placeholder, setState, onBlur }) {
+function FormElement({ labelValue, type, id, placeholder, state, setState, onBlur }) {
     const [error, setError] = useState();
     return (
         <div className="form-element">
@@ -10,6 +10,7 @@ function FormElement({ labelValue, type, id, placeholder, setState, onBlur }) {
                 id={id} 
                 type={type} 
                 placeholder={placeholder} 
+                value={state}
                 onChange={e => setState(e.target.value)} 
                 onBlur={e => onBlur(e, setError)} 
             />

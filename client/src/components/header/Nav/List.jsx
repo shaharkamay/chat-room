@@ -7,8 +7,6 @@ function List() {
     return (
         <ul className="nav__list">
             <Item linkName="Home" link="/" />
-            
-            {console.log(loggedIn)}
             {loggedIn
                 ? [
                     <Item linkName="Chat Room" link="/chat" key="chat" />,
