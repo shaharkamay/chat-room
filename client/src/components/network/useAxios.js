@@ -23,7 +23,7 @@ function useAxios({ url, method, body = null, headers = {} }) {
       })
   }, [])
 
-  return { data, isPending, error };
+  return { data, setData, isPending, error };
 }
 
 export default useAxios

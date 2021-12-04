@@ -19,17 +19,24 @@
 }
 
 .chat__box--container {
-    overflow: auto;
+    
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 80%;
 }
 
 .chat__box {
-    padding: 1em;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+
+.chat__box--messages {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    padding: 1em;
     background-image: var(--bg-chat-img);
 }
 
@@ -78,12 +85,8 @@
 }
 
 .send-message {
-    position: sticky;
-    bottom: 0;
-    left: 0;
     background-color: var(--clr-secondary);
     padding: .5em;
-    z-index: 1;
 
     .send-message__form {
         width: 100%;
