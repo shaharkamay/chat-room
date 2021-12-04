@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import Footer from "./components/footer/Footer";
 import { AuthProvider } from "./components/context/AuthContext";
 import Hello from "./components/hello/Hello";
+import SignUp from "./components/sign-up/SignUp";
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />
+
+                {/* Sign Up Route */}
+                <Route path="/sign-up" element={<SignUp />} />
               </Routes>
             </main>
             <Footer />

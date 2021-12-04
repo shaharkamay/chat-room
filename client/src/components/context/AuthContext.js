@@ -57,20 +57,22 @@ const login = useCallback(async ({ email, password }) => {
   }
 }, []);
 
-const register = useCallback(async ({ username, password, email }) => {
-  // try {
-  //   await axios.post(`http://localhost:8080/api/auth/register`, {
-  //     username,
-  //     password,
-  //     email,
-  //   });
-  // } catch (error) {
-  //   if (error.isAxiosError) throw error.response.data.error;
-  //   else {
-  //     console.log(error);
-  //     throw Error("Something went bad");
-  //   }
-  // }
+const signUp = useCallback(async ({ firstName, lastName, email, password }) => {
+  try {
+    const response = await axios.post(`http://localhost:8080/api/auth/sign-up`, {
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.isAxiosError) throw error.response.data.error;
+    else {
+      console.log(error);
+      throw Error("Something went bad");
+    }
+  }
 }, []);
 
 const logout = useCallback(async () => {
@@ -91,7 +93,7 @@ const logout = useCallback(async () => {
 
   return (
     <AuthContext.Provider
-      value={{ loggedIn, email, accessToken, login, logout, register }}
+      value={{ loggedIn, email, accessToken, login, logout, signUp }}
     >
       {children}
     </AuthContext.Provider>

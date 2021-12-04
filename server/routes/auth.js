@@ -17,7 +17,7 @@ const authRouter = express.Router();
 
 import auth from '../middleware/auth-handler.js';
 
-import { validateLogin, validateRegister } from '../middleware/validator.js';
+import { validateLogin, validateSignUp } from '../middleware/validator.js';
 
 authRouter.post("/login", validateLogin, async (req, res, next) => {
     try {
@@ -71,7 +71,27 @@ authRouter.post("/token", async (req, res, next) => {
         next(err);
     }
 });
-// authRouter.post("/register", validateRegister, register);
+authRouter.post("/sign-up", validateSignUp, async (req, res, next) => {
+    try {
+        const { firstName, lastName, email, password } = req.body;
+        
+        const exists = await User.find({ email });
+
+        if(exists.length > 0) throw { status: 400, message: "email already exists" };
+
+        await User.create({
+            first_name: firstName,
+            last_name: lastName,
+            email,
+            password,
+        });
+
+        res.send({ isSignedUp: true });
+    } catch (err) {
+        next(err);
+    }
+});
+
 authRouter.post("/logout", auth, async (req, res, next) => {
     try {
         const { userId } = req.user;
