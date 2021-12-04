@@ -8,7 +8,7 @@ function SendMessage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios.post(
-            `http://localhost:8080/api/chat/message`,
+            `/api/chat/message`,
             {
                 content: sendMessage,
             },  
