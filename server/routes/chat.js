@@ -29,30 +29,31 @@ chatRouter.post("/message", async (req, res, next) => {
 });
 
 chatRouter.get("/message", async (req, res, next) => {
-
     const sendOnlineUsers = () => {
         res.write(`data: ${JSON.stringify({ online })} \n\n`);
     }
 
     try {
-        res.writeHead(200, {
-            "Content-Type": "text/event-stream",
-            Connection: "Keep-Alive",
-        })
-        const messages = await Message.find({});
-        res.write(`data: ${JSON.stringify({ messages })} \n\n`);
-        emitter.on('message', (newMessage) => {
-            res.write(`data: ${JSON.stringify({ newMessage })} \n\n`);
-        })
-        
-        emitter.addListener('online', sendOnlineUsers);
-        emitter.emit('online');
-
         if(!online.includes(req.user.email)) {
             online.push(req.user.email);
         }
 
+        res.writeHead(200, {
+            "Content-Type": "text/event-stream",
+            Connection: "Keep-Alive",
+        })
 
+        emitter.addListener('online', sendOnlineUsers);
+        emitter.emit('online');
+
+        const messages = await Message.find({});
+
+        res.write(`data: ${JSON.stringify({ messages })} \n\n`);
+
+        emitter.on('message', (newMessage) => {
+            res.write(`data: ${JSON.stringify({ newMessage })} \n\n`);
+        })
+        
         req.on('close', () => {
             online = online.filter(email => email !== req.user.email);
             emitter.emit('online');
