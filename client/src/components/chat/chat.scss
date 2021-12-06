@@ -88,12 +88,12 @@
     padding: .5em;
 
     .send-message__form {
-        width: 100%;
         display: flex;
         gap: .5em;
         justify-content: space-between;
     }
     .send-message__input {
+        min-width: 0;
         flex-grow: 1;
         padding: .5em;
         border: none;
