@@ -3,9 +3,9 @@ function ChatAside({ online }) {
         <aside className="chat__aside">
             {online.map((email, i) => {
                 return (
-                    <div className="aside__user">
-                        <div className="online-circle"></div>
-                        <div className="aside__user--email" key={i} >{email}</div>
+                    <div className="aside__user" key={`aside__user${i}`}>
+                        <div className="online-circle" key={`online-circle${i}`}></div>
+                        <div className="aside__user--email" key={`aside__user--email${i}`} >{email}</div>
                     </div>
                 )
             })}

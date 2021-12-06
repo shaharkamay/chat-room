@@ -7,7 +7,7 @@ function List() {
     const { loggedIn, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     return (
-        <ul className="nav__list">
+        <ul className="nav__list row">
             <Item linkName="Home" link="/" />
             {loggedIn
                 ? [

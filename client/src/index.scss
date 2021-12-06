@@ -144,3 +144,25 @@ main {
     max-width: 1200px;
 }
 
+
+/* 
+Screens 700px+
+*/
+@media (min-width: 700pX) {
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;
+    }
+}
+
+/* 
+Screens 1000px+
+*/
+@media (min-width: 1000pX) {
+    .row-large {
+        display: flex;
+        justify-content: space-between;
+    }
+}
