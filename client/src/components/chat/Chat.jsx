@@ -17,7 +17,7 @@ function Chat() {
 
     useEffect(() => {
         if(!loggedIn) navigate('/');
-        const source = new EventSourcePolyfill("/api/chat/message", {
+        const source = new EventSourcePolyfill("http://localhost:8080/api/chat/message", {
             headers: { "Content-Type": "text/event-stream", auth: accessToken },
         });
 
@@ -39,7 +39,7 @@ function Chat() {
                 setOnline(data.online)
             }
         };
-    }, [])
+    }, [accessToken, loggedIn, navigate])
 
     return (
         <div className="chat">

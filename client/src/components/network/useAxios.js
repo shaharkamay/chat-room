@@ -21,7 +21,7 @@ function useAxios({ url, method, body = null, headers = {} }) {
       .finally(() => {
         setIsPending(false);
       })
-  }, [])
+  }, [body, headers, method, url])
 
   return { data, setData, isPending, error };
 }

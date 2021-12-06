@@ -1,11 +1,7 @@
 import Message from "./Message"
 import SendMessage from "./SendMessage"
-import { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import useAxios from '../network/useAxios'
-import { useNavigate } from "react-router";
-import { EventSourcePolyfill  } from 'event-source-polyfill';
 
 function ChatBox({ messages }) {
     const { email } = useContext(AuthContext);
