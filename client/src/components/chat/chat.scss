@@ -111,6 +111,12 @@
         font-family: inherit;
         font-weight: bold;
         cursor: pointer;
+
+        .send-svg {
+            width: 23px;
+            aspect-ratio: 1;
+            vertical-align: bottom;
+        }
     }
     .send-message__button:hover,
     .send-message__button:focus {
