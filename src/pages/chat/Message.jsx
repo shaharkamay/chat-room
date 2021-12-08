@@ -5,7 +5,7 @@ function Message({ dir, user, content, timestamp }) {
                 <div className="message__user" style={{color: generateUserColor(user)}}>
                     {user}
                 </div>
-                <div className="message__content">
+                <div className="message__content" dir="auto">
                     {content}    
                 </div>
                 <div className="message__timestamp">
