@@ -11,7 +11,7 @@ function SendMessage() {
             `/api/chat/message`,
             {
                 content: sendMessage,
-            },  
+            },
             {
                 headers: {
                     auth: accessToken,

@@ -38,6 +38,9 @@ function App() {
 
                 {/* Sign Up Route */}
                 <Route path="/sign-up" element={<SignUp />} />
+
+                {/* Default Route */}
+                <Route path="*" element={<Home />} />
               </Routes>
             </main>
             <Footer />
