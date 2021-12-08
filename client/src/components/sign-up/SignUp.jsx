@@ -2,22 +2,49 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Form from "../form/Form"
-import './login.scss';
+import './sign-up.scss';
 import validator from 'validator';
 
-function Login() {
-    const { login, loggedIn } = useContext(AuthContext);
+function SignUp() {
+    const { signUp, loggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         if(loggedIn) navigate('/');
     }, [loggedIn, navigate])
 
     const formElements = [
+        {
+            labelValue: "First Name",
+            type: "text",
+            id: "first-name",
+            placeholder: "Enter first name",
+            state: firstName,
+            setState: setFirstName,
+            handleBlur: (e, setError) => {
+                if(!validator.isAlpha(e.target.value)) {
+                    setError('Invalid name');
+                } else setError('');
+            }
+        },
+        {
+            labelValue: "Last Name",
+            type: "text",
+            id: "last-name",
+            placeholder: "Enter last name",
+            state: lastName,
+            setState: setLastName,
+            handleBlur: (e, setError) => {
+                if(!validator.isAlpha(e.target.value)) {
+                    setError('Invalid name');
+                } else setError('');
+            }
+        },
         {
             labelValue: "Email",
             type: "email",
@@ -48,20 +75,23 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await login({ email, password });
+        const data = await signUp({ firstName, lastName, email, password });
+        if(data.isSignedUp) navigate('/login');
+        else {
+            // error
+        }
     }
-
 
     return (
         <Form 
-            containerClass="log-in-container" 
-            id="log-in-form" 
-            title="Log In" 
+            containerClass="sign-up-container" 
+            id="sign-up-form" 
+            title="Sign Up" 
             formElements={formElements} 
-            submitValue="Log In" 
+            submitValue="Sign Up" 
             handleSubmit={handleSubmit} 
         />
     )
 }
 
-export default Login
+export default SignUp

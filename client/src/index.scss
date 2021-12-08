@@ -13,12 +13,12 @@ p - 16px (footer)
 */
 
 :root {
-    --clr-accent: #16920b;
+    --clr-accent: #3d75c9;
 
     --clr-light: #F1F1F1;
     --clr-dark: #2E323F;
     --clr-primary: #d0d3db;
-    --clr-secondary: #7d86a3;
+    --clr-secondary: #bcc1cf;
 
     --foreground: var(--clr-dark);
     --background: var(--clr-light);
@@ -37,6 +37,8 @@ p - 16px (footer)
 
     --link-clr: #0000EE;
     --visited-clr: #551A8B;
+
+    --bg-chat-img: url('./assets/bg-chat-theme-light.png');
 }
 
 *,
@@ -59,11 +61,6 @@ img {
     max-width: 100%;
 }
 
-body {
-    font-family: var(--font-text);
-    line-height: 1.5;
-}
-
 .theme-dark {
     --clr-light: #F1F1F1;
     --clr-dark: #2E323F;
@@ -80,6 +77,44 @@ body {
     --link-clr: #8ab4f8;
     --visited-clr: #c58af9;
 
+    --bg-chat-img: url('./assets/bg-chat-theme-dark.png');
+}
+
+body {
+    background-color: var(--clr-dark);
+    min-height: 100vh;
+    font-family: var(--font-text);
+    line-height: 1.5;
+}
+
+/*
+main section
+*/
+main {
+    padding: 3em 0;
+    background-color: var(--clr-primary);
+}
+
+.App {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.default--button {
+    vertical-align: bottom;
+    cursor: pointer;
+    border: none;
+    background-color: var(--clr-accent);
+    color: var(--clr-light);
+    border-radius: var(--radius);
+    font-family: var(--font-title);
+    font-size: inherit;
+    text-decoration: none;
+    padding: .5em 0;
+}
+.default--button:hover,
+.default--button:focus {
+    opacity: 0.75;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -98,6 +133,8 @@ body {
 
         --link-clr: #8ab4f8;
         --visited-clr: #c58af9;
+
+        --bg-chat-img: url('./assets/bg-chat-theme-dark.png');
     }
 }
 
@@ -107,3 +144,25 @@ body {
     max-width: 1200px;
 }
 
+
+/* 
+Screens 700px+
+*/
+@media (min-width: 700pX) {
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;
+    }
+}
+
+/* 
+Screens 1000px+
+*/
+@media (min-width: 1000pX) {
+    .row-large {
+        display: flex;
+        justify-content: space-between;
+    }
+}

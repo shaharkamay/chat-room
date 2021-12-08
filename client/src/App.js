@@ -3,9 +3,12 @@ import { useState } from "react";
 import ThemeContext from "./components/context/ThemeContext";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
-import ChatRoom from "./components/chat-room/ChatRoom";
+import Chat from "./components/chat/Chat";
 import Login from "./components/login/Login";
 import Footer from "./components/footer/Footer";
+import { AuthProvider } from "./components/context/AuthContext";
+import Hello from "./components/hello/Hello";
+import SignUp from "./components/sign-up/SignUp";
 
 
 function App() {
@@ -16,25 +19,36 @@ function App() {
   const themeState = { theme, setTheme };
 
   return (
-    <ThemeContext.Provider value={themeState}>
-      <div className={`App ${theme}`}>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            {/* Main Route */}
-            <Route exact path="/" element={<Home />} />
+    <AuthProvider>
+      <ThemeContext.Provider value={themeState}>
+        <div className={`App ${theme}`}>
+          <BrowserRouter>
+            <Header />
+            <Hello />
+            <main>
+              <Routes>
+                {/* Main Route */}
+                <Route exact path="/" element={<Home />} />
 
-            {/* Chat Route */}
-            <Route path="/chat" element={<ChatRoom />} />
+                {/* Chat Route */}
+                <Route path="/chat" element={<Chat />} />
 
-            {/* Login Route */}
-            <Route path="/login" element={<Login />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
+                {/* Login Route */}
+                <Route path="/login" element={<Login />} />
 
-      </div>
-    </ThemeContext.Provider>
+                {/* Sign Up Route */}
+                <Route path="/sign-up" element={<SignUp />} />
+
+                {/* Default Route */}
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </main>
+            <Footer />
+          </BrowserRouter>
+
+        </div>
+      </ThemeContext.Provider>
+    </AuthProvider>
   )
 }
 

@@ -1,4 +1,4 @@
-const morgan = require("morgan");
+import morgan from 'morgan';
 
 function morganHandler(req, res, next) {
   morgan.token("body", function (req, res) {
@@ -7,4 +7,4 @@ function morganHandler(req, res, next) {
   next();
 }
 
-module.exports = morganHandler;
+export default morganHandler;
