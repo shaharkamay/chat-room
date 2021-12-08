@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import ThemeContext from "./contexts/ThemeContext";
+import { Routes, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { ThemeContext, ThemeProvider } from "./contexts/ThemeContext";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Chat from "./pages/chat/Chat";
@@ -12,16 +12,17 @@ import SignUp from "./pages/sign-up/SignUp";
 
 function App() {
 
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "theme-auto"
-  );
-  const themeState = { theme, setTheme };
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") || "theme-auto"
+  // );
+  // const themeState = { theme, setTheme };
+  const { theme } = useContext(ThemeContext);
 
   return (
     <AuthProvider>
-      <ThemeContext.Provider value={themeState}>
+      <ThemeProvider>
         <div className={`App ${theme}`}>
-          <BrowserRouter>
+          {/* <BrowserRouter> */}
             <Header />
             <Hello />
             <main>
@@ -43,10 +44,10 @@ function App() {
               </Routes>
             </main>
             <Footer />
-          </BrowserRouter>
+          {/* </BrowserRouter> */}
 
         </div>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </AuthProvider>
   )
 }

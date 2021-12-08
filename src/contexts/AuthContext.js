@@ -10,10 +10,10 @@ export const AuthProvider = ({ children }) => {
   const [email, setEmail] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem("refresh")
+    // localStorage.getItem("refresh")
   );
   const [accessToken, setAccessToken] = useState(
-    localStorage.getItem("access")
+    // localStorage.getItem("access")
   );
 
   const askForNewToken = useCallback(async (refreshToken) => {
@@ -23,6 +23,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    setRefreshToken(localStorage.getItem("refresh"));
+    setAccessToken(localStorage.getItem("access"));
     (async () => {
       if (refreshToken && refreshToken !== "undefined" && !loggedIn) {
         try {

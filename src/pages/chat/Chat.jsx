@@ -5,7 +5,7 @@ import './chat.scss';
 import ChatAside from './ChatAside';
 import ChatBox from './ChatBox';
 import { EventSourcePolyfill  } from 'event-source-polyfill';
-import { BASE_URL } from '../../index.js';
+import BASE_URL from '../../index.js';
 
 function Chat() {
     const { accessToken, loggedIn } = useContext(AuthContext);

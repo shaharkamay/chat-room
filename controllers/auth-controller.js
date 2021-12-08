@@ -1,4 +1,3 @@
-import express from 'express';
 import User from '../database/models/user.js';
 import Token from '../database/models/token.js';
 import jwt from 'jsonwebtoken';
