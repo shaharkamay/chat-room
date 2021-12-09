@@ -23,7 +23,6 @@ app.get("/", (req, res) => {
   console.log("llllllll")
   res.sendFile("./index.html");
 });
-app.get("/*", render)
 
 app.get("/login", render);
 app.get("/sign-up", render);
