@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import './index.scss';
 
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.hydrate(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
-
-export const BASE_URL = window.location.hostname === 'localhost' ? "http://localhost:8080" : '';
+const BASE_URL = window.location.hostname === 'localhost' ? "http://localhost:8080" : '';
+export default BASE_URL;

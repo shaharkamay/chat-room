@@ -5,6 +5,7 @@ import morganHandler from './middleware/morgan.js';
 import errorHandler from './error-handling/error-handler.js';
 import apiRouter from './routes/api.js';
 import cookieParser from 'cookie-parser';
+import { render } from './controllers/app-controller.js';
 
 const app = express();
 
@@ -19,8 +20,13 @@ app.use(
 
 app.use(express.static("./build"));
 app.get("/", (req, res) => {
+  console.log("llllllll")
   res.sendFile("./index.html");
 });
+
+app.get("/login", render);
+app.get("/sign-up", render);
+app.get("/chat", render);
 
 app.use('/api', apiRouter);
 

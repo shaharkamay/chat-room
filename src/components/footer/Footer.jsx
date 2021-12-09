@@ -1,3 +1,4 @@
+import React from 'react';
 import Credit from './Credit/Credit';
 import './footer.scss';
 

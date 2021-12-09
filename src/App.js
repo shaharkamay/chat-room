@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import ThemeContext from "./contexts/ThemeContext";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
@@ -21,7 +21,7 @@ function App() {
     <AuthProvider>
       <ThemeContext.Provider value={themeState}>
         <div className={`App ${theme}`}>
-          <BrowserRouter>
+          {/* <BrowserRouter> */}
             <Header />
             <Hello />
             <main>
@@ -43,7 +43,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
-          </BrowserRouter>
+          {/* </BrowserRouter> */}
 
         </div>
       </ThemeContext.Provider>

@@ -1,3 +1,4 @@
+import React from 'react';
 import ghLogo from '../GitHub-Mark-32px.png';
 
 function Credit({ ghName, ghLink }) {
