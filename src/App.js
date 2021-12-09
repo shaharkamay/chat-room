@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useContext } from "react";
-import { ThemeContext, ThemeProvider } from "./contexts/ThemeContext";
+import React, { useState } from "react";
+import ThemeContext from "./contexts/ThemeContext";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Chat from "./pages/chat/Chat";
@@ -12,15 +12,14 @@ import SignUp from "./pages/sign-up/SignUp";
 
 function App() {
 
-  // const [theme, setTheme] = useState(
-  //   localStorage.getItem("theme") || "theme-auto"
-  // );
-  // const themeState = { theme, setTheme };
-  const { theme } = useContext(ThemeContext);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "theme-auto"
+  );
+  const themeState = { theme, setTheme };
 
   return (
     <AuthProvider>
-      <ThemeProvider>
+      <ThemeContext.Provider value={themeState}>
         <div className={`App ${theme}`}>
           {/* <BrowserRouter> */}
             <Header />
@@ -47,7 +46,7 @@ function App() {
           {/* </BrowserRouter> */}
 
         </div>
-      </ThemeProvider>
+      </ThemeContext.Provider>
     </AuthProvider>
   )
 }
